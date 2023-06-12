@@ -49,7 +49,7 @@ export default function RootLayout() {
         },
       });
       const _cities = await req.json();
-      console.log("get city info done");
+      console.log("get city info done",_cities);
       return {
         ..._cities[0],
         lat,

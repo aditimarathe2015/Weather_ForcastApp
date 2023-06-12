@@ -1,4 +1,4 @@
-import { Alert, StyleSheet ,TouchableHighlight,Image} from "react-native";
+import { Alert, StyleSheet ,TouchableHighlight,Image ,ActivityIndicator} from "react-native";
 
 import EditScreenInfo from "../../components/EditScreenInfo";
 import { Text, View } from "../../components/Themed";
@@ -15,6 +15,7 @@ export default function TabOneScreen() {
   const { name, lat, long } = params;
   const [weatherData, setWeather] = useState<any>(null);
   const [forcast, setForcase] = useState<any>(null);
+  const [loader, setLoader] = useState<any>(true);
   const router = useRouter();
   const cnt = 7;
   const loadForcast = async () => {
@@ -35,7 +36,12 @@ export default function TabOneScreen() {
   if (Object.keys(params).length === 0)
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Loading....</Text>
+        {/* <Text style={styles.title}>Loading....</Text> */}
+        <ActivityIndicator
+   animating = {loader}
+   color = '#bc2b78'
+   size = "large"
+style = {styles.activityIndicator}/>
       </View>
     );
   else
@@ -198,4 +204,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#fff",
   },
+  activityIndicator: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 100
+ }
 });

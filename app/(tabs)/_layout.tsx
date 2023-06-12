@@ -44,7 +44,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="cities"
+        name="two"
         options={{
           title: 'Add Cities',
           tabBarIcon: ({ color }) => <TabBarIcon name="map-marker" color={color} />,
