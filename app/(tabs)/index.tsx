@@ -9,7 +9,7 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { weatherConditions } from "../../Util/WeatherConditions";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import {WEATHER_API_KEY} from '../../constants/env.json'
+import {WEATHER_API_KEY,WEATHER_URL} from '../../constants/env.json'
 
 export default function WeatherScreen() {
   const params = useLocalSearchParams();

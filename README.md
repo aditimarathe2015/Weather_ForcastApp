@@ -32,7 +32,7 @@ npm install
 ##### In the .env.json file, replace API_KEY with your OpenWeather API Key.
 ```bash
 {
-  "API_KEY_FORCAST": "Forecast_Key",
+  "API_KEY_FORCAST": "ForecastAPI_Key",
   "WEATHER_URL": "https://openweathermap.org",
   "API_KEY": "City_API_Key,
   "CityUrl": "https://api.api-ninjas.com/v1/city?name=",
@@ -42,6 +42,14 @@ npm install
 Running the applicaiton
 npm start
 check on Expo go
+
+
+### API Used:
+ 1. Get Lat and Long based on city Name  = 'https://api.api-ninjas.com/v1/city?name='
+ 2. Icon :  uri: `https://openweathermap.org/img/wn/04.png`,
+ 3. Weather API : `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&APPID=${API_KEY}&units=metric`
+4. Forcast API : `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${API_KEY_FORCAST}`
+
 
 ### Home Screen
 
