@@ -43,5 +43,24 @@ npm install
 ### Running the applicaiton
 
 ```bash
-expo start
-```
+
+npm start
+
+### Home Screen
+
+<img src="./assets/images/Img/Home1.jpeg" width="300">
+
+
+<img src="./assets/images/Img/Home2.jpeg" width="300">
+
+
+### Forecast Screen
+
+<img src="./assets/images/Img/WeatherForcast.jpeg" width="300">
+
+
+###  Search (City) Screen
+
+<img src="./assets/images/Img/City.jpeg" width="300">
+
+
