@@ -58,7 +58,7 @@ check on Expo go
 
 ###  Search (City) Screen
 
-<img src="./assets/images/Img/City.jpeg.jpeg" width="300">
+<img src="./assets/images/Img/City.jpeg" width="300">
 
 
 
