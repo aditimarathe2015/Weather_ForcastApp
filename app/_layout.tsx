@@ -49,8 +49,7 @@ export default function RootLayout() {
         },
       });
       const _cities = await req.json();
-      console.log("get city info done",_cities);
-      return {
+        return {
         ..._cities[0],
         lat,
         long,
@@ -63,7 +62,7 @@ export default function RootLayout() {
       await Location.requestForegroundPermissionsAsync();
     if (status.status !== "granted") {
       Alert.alert("Permission to access location ws denied");
-      router.replace("/tabs/two");
+      router.replace("/tabs/cities");
     }
     //get current locaton
     let location = await Location.getCurrentPositionAsync({
@@ -71,8 +70,6 @@ export default function RootLayout() {
     });
     const long = location.coords.longitude;
     const lat = location.coords.latitude;
-    console.log("get location done");
-
     const city = await getCityNameByLatLong(lat, long);
     setLoading(false);
     router.replace({ pathname: "/(tabs)/", params: city });

@@ -1,14 +1,12 @@
 import { FlatList, StyleSheet, useColorScheme } from "react-native";
-
 import { Text, View } from "../../components/Themed";
-
-import React, { Component, useState, useEffect } from "react";
-import { TextInput, Alert } from "react-native";
+import React, { useState, useEffect } from "react";
+import { TextInput } from "react-native";
 import Icon from "@expo/vector-icons/FontAwesome";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useRouter } from "expo-router";
 
-export default function TabTwoScreen() {
+export default function CitiesScreen() {
   const [search, setSearch] = useState("");
   const [cities, setCities] = useState<any>({});
   const [city, setCity] = useState<any>(null);
@@ -50,7 +48,6 @@ export default function TabTwoScreen() {
       }
       setCities(cities);
       await AsyncStorage.setItem("cities", JSON.stringify(cities));
-      //console.log(JSON.stringify(cities))
     } catch (error) {
       setCity(null);
     }
@@ -82,12 +79,18 @@ export default function TabTwoScreen() {
         <FlatList
           data={Object.values(cities)}
           renderItem={(item: any) => {
-            return <Text style={styles.item} onPress={() => {
-            //  console.log(item.item)
-              item.item.lat = item.item.latitude;
-              item.item.long = item.item.longitude;
-              router.replace({pathname: "/(tabs)/" , params: item.item })
-            }}>{item.item.name}</Text>;
+            return (
+              <Text
+                style={styles.item}
+                onPress={() => {
+                  item.item.lat = item.item.latitude;
+                  item.item.long = item.item.longitude;
+                  router.replace({ pathname: "/(tabs)/", params: item.item });
+                }}
+              >
+                {item.item.name}
+              </Text>
+            );
           }}
         />
       </View>
@@ -104,7 +107,7 @@ const styles = StyleSheet.create({
   item: {
     padding: 10,
     fontSize: 20,
-    height: 50
+    height: 50,
   },
   enterCity: {
     height: 54,

@@ -1,6 +1,9 @@
-import { Alert, StyleSheet ,TouchableHighlight,Image ,ActivityIndicator} from "react-native";
+import {
+   StyleSheet,
+  TouchableHighlight,
+  ActivityIndicator,
+} from "react-native";
 
-import EditScreenInfo from "../../components/EditScreenInfo";
 import { Text, View } from "../../components/Themed";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
@@ -9,26 +12,22 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const API_KEY = "6e36007bc6c9a1087677515b1d201202";
 
-export default function TabOneScreen() {
+export default function WeatherScreen() {
   const params = useLocalSearchParams();
 
   const { name, lat, long } = params;
   const [weatherData, setWeather] = useState<any>(null);
-  const [forcast, setForcase] = useState<any>(null);
-  const [loader, setLoader] = useState<any>(true);
   const router = useRouter();
-  const cnt = 7;
+  const [loader, setLoader] = useState<any>(true);
   const loadForcast = async () => {
-    if(Object.keys(params).length === 0) return;
+    if (Object.keys(params).length === 0) return;
     const response = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&APPID=${API_KEY}&units=metric`
     );
     const data = await response.json();
-    console.log("weather", data);
     setWeather(data);
   };
 
- 
   useEffect(() => {
     loadForcast();
   }, [name]);
@@ -36,12 +35,12 @@ export default function TabOneScreen() {
   if (Object.keys(params).length === 0)
     return (
       <View style={styles.container}>
-        {/* <Text style={styles.title}>Loading....</Text> */}
         <ActivityIndicator
-   animating = {loader}
-   color = '#bc2b78'
-   size = "large"
-style = {styles.activityIndicator}/>
+          animating={loader}
+          color="#bc2b78"
+          size="large"
+          style={styles.activityIndicator}
+        />
       </View>
     );
   else
@@ -60,8 +59,7 @@ style = {styles.activityIndicator}/>
               ]}
             >
               <Text style={styles.cityName}>{name + "   "}</Text>
-            
-      
+
               <View
                 style={[
                   styles.headerContainer,
@@ -76,7 +74,7 @@ style = {styles.activityIndicator}/>
                   name={weatherConditions[weatherData.weather[0].main].icon}
                   color={"#fff"}
                 />
-                <Text style={styles.tempText}>  {weatherData.main.temp}˚c</Text>
+                <Text style={styles.tempText}> {weatherData.main.temp}˚c</Text>
               </View>
               <View
                 style={[
@@ -88,15 +86,14 @@ style = {styles.activityIndicator}/>
                 ]}
               >
                 <Text style={styles.windText}>
-                Wind Flow : {weatherData.wind.speed} km/h
+                  Wind Flow : {weatherData.wind.speed} km/h
                 </Text>
                 <Text style={styles.windText}>
-                Humidity : {weatherData.main.humidity} %
+                  Humidity : {weatherData.main.humidity} %
                 </Text>
                 <Text style={styles.windText}>
-                Visiblity : {weatherData.visibility/1000} KM
+                  Visiblity : {weatherData.visibility / 1000} KM
                 </Text>
-                
               </View>
 
               <View
@@ -115,20 +112,28 @@ style = {styles.activityIndicator}/>
                   {weatherConditions[weatherData.weather[0].main].subtitle}
                 </Text>
                 <View
-              style={[
-                styles.imageForcast,
-                {
-                  backgroundColor:
-                    weatherConditions[weatherData.weather[0].main].color,
-                },
-              ]}>
-                <TouchableHighlight   onPress={() => router.replace({pathname: "/(tabs)/forcast" , params: params })}>
-                <MaterialCommunityIcons
-                  size={80}
-                  name={weatherConditions[weatherData.weather[0].main].wind}
-                  color={"skyblue"}
-                />
-      </TouchableHighlight>
+                  style={[
+                    styles.imageForcast,
+                    {
+                      backgroundColor:
+                        weatherConditions[weatherData.weather[0].main].color,
+                    },
+                  ]}
+                >
+                  <TouchableHighlight
+                    onPress={() =>
+                      router.replace({
+                        pathname: "/(tabs)/forcast",
+                        params: params,
+                      })
+                    }
+                  >
+                    <MaterialCommunityIcons
+                      size={80}
+                      name={weatherConditions[weatherData.weather[0].main].wind}
+                      color={"skyblue"}
+                    />
+                  </TouchableHighlight>
                 </View>
               </View>
             </View>
@@ -144,7 +149,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
- 
+
   weatherContainer: {
     flex: 1,
   },
@@ -181,12 +186,11 @@ const styles = StyleSheet.create({
     color: "white",
   },
   imageForcast: {
-    flexDirection:"row",
-   // alignItems: "flex-start",
+    flexDirection: "row",
     justifyContent: "space-around",
     marginLeft: 260,
     color: "white",
-    width:100
+    width: 100,
   },
   windTitle: {
     fontSize: 20,
@@ -195,19 +199,18 @@ const styles = StyleSheet.create({
   windContainer: {
     flexDirection: "column",
     flex: 0,
-   // alignItems: "flex-start",
     justifyContent: "flex-end",
     paddingLeft: 210,
     marginBottom: 40,
   },
-  windText: { 
+  windText: {
     fontSize: 16,
     color: "#fff",
   },
   activityIndicator: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 100
- }
+    justifyContent: "center",
+    alignItems: "center",
+    height: 100,
+  },
 });
