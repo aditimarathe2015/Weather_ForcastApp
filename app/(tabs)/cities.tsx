@@ -25,8 +25,7 @@ export default function CitiesScreen() {
   }, []);
 
   const featchCity = async () => {
-    console.dir(cities);
-    if (cities[search]) {
+      if (cities[search]) {
       setCity(cities[search]);
       return;
     }
@@ -46,8 +45,10 @@ export default function CitiesScreen() {
         setCity(city);
         cities[search] = city;
       }
-      setCities(cities);
-      await AsyncStorage.setItem("cities", JSON.stringify(cities));
+      let uniqueCities = cities.filter((item:any, i:any, ar:any) => ar.indexOf(item) === i);
+      console.log(uniqueCities)
+      setCities(uniqueCities);
+      await AsyncStorage.setItem("cities", JSON.stringify(uniqueCities));
     } catch (error) {
       setCity(null);
     }
