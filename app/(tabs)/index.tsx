@@ -9,8 +9,7 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { weatherConditions } from "../../Util/WeatherConditions";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-
-const API_KEY = "6e36007bc6c9a1087677515b1d201202";
+import {WEATHER_API_KEY} from '../../constants/env.json'
 
 export default function WeatherScreen() {
   const params = useLocalSearchParams();
@@ -22,7 +21,7 @@ export default function WeatherScreen() {
   const loadForcast = async () => {
     if (Object.keys(params).length === 0) return;
     const response = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&APPID=${API_KEY}&units=metric`
+      `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&APPID=${WEATHER_API_KEY}&units=metric`
     );
     const data = await response.json();
     setWeather(data);

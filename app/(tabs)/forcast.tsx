@@ -2,9 +2,10 @@ import { StyleSheet, Text, View, FlatList, Image } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useLocalSearchParams } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
+import {API_KEY_FORCAST,WEATHER_URL} from '../../constants/env.json'
 
-const API_KEY_FORCAST = "14780e82a78c04db6dba2f35a894dd45";
-const WEATHER_URL = "https://openweathermap.org";
+// const API_KEY_FORCAST = "14780e82a78c04db6dba2f35a894dd45";
+// const WEATHER_URL = "https://openweathermap.org";
 
 const cleanData = (list: any[]) => {
   let dates: any[] = [];
@@ -87,6 +88,7 @@ const styles = StyleSheet.create({
     color: "#C84831",
     fontWeight: "bold",
     alignItems: "center",
+    textAlign:"center"
   },
   item: {
     fontSize: 20,
