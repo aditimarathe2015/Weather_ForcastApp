@@ -30,7 +30,6 @@ npm install
 
 ##### In the .env.json file, replace 'YOUR_OPEN_WEATHER_API_KEY' with your OpenWeather API Key.
 
-```bash
 {
   "API_KEY_FORCAST": "Forecast_Key",
   "WEATHER_URL": "https://openweathermap.org",
@@ -38,12 +37,7 @@ npm install
   "CityUrl": "https://api.api-ninjas.com/v1/city?name=",
   "WEATHER_API_KEY": "Weather_API_Key"
 }
-```
-
-### Running the applicaiton
-
-```bash
-
+Running the applicaiton
 npm start
 
 ### Home Screen
@@ -61,6 +55,9 @@ npm start
 
 ###  Search (City) Screen
 
-<img src="./assets/images/Img/City.jpeg" width="300">
+<img src="./assets/images/Img/WeatherForcast.jpeg" width="300">
+
+
+
 
 
